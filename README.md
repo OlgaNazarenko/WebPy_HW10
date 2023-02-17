@@ -13,5 +13,5 @@ The following has been completed in this task [^1]:
 However, I was not able to overcome the issue with the "*search for quotes by tags*", once pagination was implemented 
 everything just collapsed. 
 
-[^1]: Login -> Japan
+[^1]: Login -> Japan, 
       Password -> Seoul2023!
