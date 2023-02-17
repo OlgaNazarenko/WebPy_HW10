@@ -1,0 +1,93 @@
+{% load extract_tags %}
+{% load static %}
+
+{% block body %}
+
+<head>
+  <meta charset="UTF-8"/>
+  <title>Organizer</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'quoteapp/style.css' %}">
+</head>
+
+<header>
+  <div style="text-align: center;">
+    <h1>Quotes to Scrape</h1>
+  </div>
+  <ul style="display: flex; justify-content: flex-end;">
+    {% if user.is_authenticated %}
+      <li style="margin-right: 2em;">
+        <a href="{% url 'user:profile' %}" role="custom-button">Home</a>
+      </li>
+    {% else %}
+      <li style="margin-right: 2em;">
+        <a href="{% url 'user:login' %}" role="custom-button">Login</a>
+      </li>
+      <li style="margin-right: 2em;">
+        <a href="{% url 'user:signup' %}" role="custom-button">Sign Up</a>
+      </li>
+    {% endif %}
+  </ul>
+</header>
+
+<div class="container">
+ {% for quote in page.object_list %}
+  <div class="quote-box">
+    <p>Quote: {{ quote.quote }}</p>
+    <p>Author: <a href="/author/{{ quote.author.id }}">{{ quote.author.fullname }} {{ quote.author.name }}</a></p>
+    <p>Tags: <small>
+      {% autoescape on %}
+      {{ quote.tags|transform_tags }}
+      {% endautoescape %}
+    </small></p>
+  </div>
+{% endfor %}
+</div>
+
+
+<div class="container">
+ <div class="row d-flex align-items-center">
+    <div class="col-md-4 offset-md-4">
+      <ul class="pagination">
+        <span> Page {{ page.number }} of {{ page.paginator.num_pages }}</span>
+
+        {% if page.has_previous %}
+          <li class="page-item">
+            <a href="{% url 'quoteapp:main' %}?page={{ page.previous_page_number }}"> Previous</a>
+          </li>
+        {% endif %}
+
+        {% if not request.resolver_match.url_name == 'main' %}
+          <a href="{% url 'quoteapp:main' %}" role="custom-button">Back to Main Page</a>
+        {% endif %}
+
+        {% if page.has_next %}
+          <li class="page-item">
+            <a href="{% url 'quoteapp:main' %}?page={{ page.next_page_number }}"> Next</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+  <div>
+    {% for tag in tags %}
+      <a href="{% url 'search_tag' tag.name %}" class="secondary">{{ tag.name.strip }}</a>
+    {% endfor %}
+  </div>
+
+  <div class="container">
+    <footer style="display: flex; flex-direction: row;">
+      <div class="footer-right" style="flex-basis: 50%;">
+        <h3>Top Ten Tags </h3>
+        {% for tag in tags %}
+          <a href="{% url 'top_ten_tags' tag.name %}">{{ tag.name }}</a>
+        {% endfor %}
+      </div>
+    </footer>
+  </div>
+
+{% endblock body %}

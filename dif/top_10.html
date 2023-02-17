@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Top Ten tags</h2>
+<ul>
+  {% for tag in tag_list %}
+    <li>{{ tag.name }} ({{ tag.count }})</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+

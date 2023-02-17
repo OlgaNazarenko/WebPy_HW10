@@ -1,0 +1,56 @@
+.alert-error, .errorlist {
+    color: #8B0000;
+    font-style: italic;
+}
+
+.alert-success {
+    color: #228B22;
+    font-style: italic;
+}
+
+.custom-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+ .author-description {
+    background-color: black;
+    color: white;
+  }
+
+  kbd {
+  background-color: #eee;
+  color: #333;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.quote {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+.quote .text {
+    font-size: 20px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.quote .author {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+main.container {
+    margin-top: 20px;
+}
+
+.quote-box {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}

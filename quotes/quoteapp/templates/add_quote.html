@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h2>Add Quote</h2>
+<form action="{% url 'quoteapp:add_quote' %}" method="post">
+    {% csrf_token %}
+    <label for="quote">Quote:</label>
+    <input type="text" id="quote" name="quote" required>
+    <br><br>
+    <label for="author">Author:</label>
+        {{ form.author }}
+        <span>{{ form.author.errors }}</span>
+    <br><br>
+    <label for="tag">Tags:
+        <option value="{{tag.name}}">{{tag.name}}</option>
+    </label>
+    <input type="text" id="tags" name="tags" required>
+    <br><br>
+    <input type="submit" value="Add Quote">
+</form>
+{% comment %} The author was added {% endcomment %}
+{% endblock %}
