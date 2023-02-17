@@ -7,11 +7,14 @@ The following has been completed in this task [^1]:
 * The ability to add a new quote to the site, indicating the author, only for a registered user. 
 * You can go to the page of each author without user authentication 
 * All quotes are viewable without user authentication
-
 * Pagination. These are the next and previous buttons
 
-However, I was not able to overcome the issue with the "*search for quotes by tags*", once pagination was implemented 
+
+However, I was not able to overcome the issue with: 
+- the "*search for quotes by tags*", once pagination was implemented 
 everything just collapsed. 
+- and *the top 10*. I got stuck on that one too.
+- well, did not quite get the migration point either. 
 
 [^1]: Login -> Japan, 
       Password -> Seoul2023!

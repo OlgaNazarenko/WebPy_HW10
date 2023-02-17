@@ -33,7 +33,7 @@
 
 <div class="container">
  {% for quote in page.object_list %}
-  <div class="quote-box">
+  <div class="quote-box dark-box">
     <p>Quote: {{ quote.quote }}</p>
     <p>Author: <a href="/author/{{ quote.author.id }}">{{ quote.author.fullname }} {{ quote.author.name }}</a></p>
     <p>Tags: <small>
@@ -73,11 +73,11 @@
 </div>
 
 
-  <div>
-    {% for tag in tags %}
-      <a href="{% url 'search_tag' tag.name %}" class="secondary">{{ tag.name.strip }}</a>
-    {% endfor %}
-  </div>
+<!--  <div>-->
+<!--    {% for tag in tags %}-->
+<!--      <a href="{% url 'search_tag' tag.name %}" class="secondary">{{ tag.name.strip }}</a>-->
+<!--    {% endfor %}-->
+<!--  </div>-->
 
   <div class="container">
     <footer style="display: flex; flex-direction: row;">

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--  <p>{{ quote.name }}</p>-->
+<!--  <p>{{ tag.name}}</p>-->
+
+
+  <div>
+    {% for tag in tags %}
+      <a href="{% url 'search_tag' tag.name %}" class="secondary">{{ tag.name }}</a>
+    {% endfor %}
+  </div>
+
+
+{% endblock %}

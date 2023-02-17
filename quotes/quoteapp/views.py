@@ -97,7 +97,7 @@ def search_tag(request, tag):
     quotes = Quote.objects.filter(tags=tag_obj)
     print(f"{quotes}")
 
-    return render (request, "index.html", {"quotes": quotes})
+    return render (request, "search_tag.html", {"quotes": quotes, "tag": tag})
 
 
 def top_ten_tags(request):

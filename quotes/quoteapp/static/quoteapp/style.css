@@ -54,3 +54,8 @@ main.container {
   margin-bottom: 20px;
   background-color: #f9f9f9;
 }
+
+.dark-box {
+  background-color: #222;
+  color: #fff;
+}
