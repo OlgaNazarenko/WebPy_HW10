@@ -13,7 +13,7 @@ The following has been completed in this task [^1]:
 However, I was not able to overcome the issue with: 
 - the "*search for quotes by tags*", once pagination was implemented 
 everything just collapsed. 
-- and *the top 10*. I got stuck on that one too.
+- and "*the top 10*". I got stuck on that one too.
 - well, did not quite get the migration point either. 
 
 [^1]: Login -> Japan, 
