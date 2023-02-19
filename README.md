@@ -11,10 +11,13 @@ The following has been completed in this task [^1]:
 * Converting data from MongoDB to Django objects and storing them in SQLite. In order to check if it works, the 
   following should be performed:
      1. Launch an interactive Python shell from a terminal:&nbsp;&nbsp;&nbsp;&nbsp;
+     
                 `python manage.py shell`
      2. Import models:&nbsp;&nbsp;&nbsp;&nbsp;
+     
                 `from quoteapp.models import Tag, Author, Quote`
      3. Run queries against the database to verify that the objects have been saved:&nbsp;&nbsp;&nbsp;&nbsp;
+     
                 `tags = Tag.objects.all()`
                  `print(tags)`
 
