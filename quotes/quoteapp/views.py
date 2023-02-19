@@ -4,7 +4,7 @@ from django.views.generic import DetailView
 from django.db.models import Count
 
 
-from taggit.models import Tag
+# from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, Page, PageNotAnInteger
 
 from .models import Quote, Author, Tag
@@ -13,6 +13,7 @@ from .forms import QuoteForm, AuthorForm
 
 def main(request):
     quotes = Quote.objects.prefetch_related('tags').all().order_by('id')
+    # topTenTags = top_ten_tags()
     quotes_paginator = Paginator(quotes, 6)
     page_num = request.GET.get('page')
     page = quotes_paginator.get_page(page_num )
@@ -22,6 +23,7 @@ def main(request):
         'tags': [],
         'count': quotes_paginator.count,
         'page': page,
+        # 'topTenTags': topTenTags,
 
     }
 
@@ -56,7 +58,6 @@ def add_quote(request):
 
         if form.is_valid():
             quote = form.save()
-            # Split the tags by comma and add them to the Quote object
             tags = form.cleaned_data['tags'].split(',')
             tags = create_tags(tags)
 
@@ -97,12 +98,10 @@ def search_tag(request, tag):
     quotes = Quote.objects.filter(tags=tag_obj)
     print(f"{quotes}")
 
-    return render (request, "search_tag.html", {"quotes": quotes, "tag": tag})
+    return render (request, "search_tag.html", {"quotes": quotes})  # "tag": tag
 
 
-def top_ten_tags(request):
-    # tag_list = Tag.objects.annotate(num_quotes=Count('quotes')).order_by('-num_tags')[:10]
-    tag_frequency = Counter(tag.name for quote in Tag.objects.all() for tag in quote.tags.all())
-    tag_list = tag_frequency.most_common(10)
+def top_ten_tags():
+    tag_list = Tag.objects.values('id').annotate(quotes_count=Count('quotes')).order_by('-num_tags')[:10]
     print(f'{tag_list}')
     return render(request, 'index.html', {'tag_list': tag_list})

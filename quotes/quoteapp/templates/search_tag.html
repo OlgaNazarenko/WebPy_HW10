@@ -2,14 +2,12 @@
 
 {% block content %}
 
-<!--  <p>{{ quote.name }}</p>-->
-<!--  <p>{{ tag.name}}</p>-->
-
-
   <div>
-    {% for tag in tags %}
+    {% for tag in quote.tags.all %}
       <a href="{% url 'search_tag' tag.name %}" class="secondary">{{ tag.name }}</a>
     {% endfor %}
+      <p>{{ quote.name }}</p>
+      <p>{{ tag.name}}</p>
   </div>
 
 

@@ -7,7 +7,7 @@ from mongoengine import connect
 
 path = Path(__file__)
 ROOT_DIR = path.parent.absolute()
-config_path = os.path.join(ROOT_DIR, 'config.ini')
+config_path = os.path.join(ROOT_DIR , '../../quotes/config.ini')
 
 # Connect to MongoDB database
 config = configparser.ConfigParser()

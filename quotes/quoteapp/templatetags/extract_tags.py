@@ -4,8 +4,6 @@ register = template.Library()
 
 
 def transform_tags(quote_tags):
-    # if not hasattr(quote_tags, 'all'):
-    #     return ''
     return mark_safe(', '.join([f"<a href='/search_tag/{name}'>#{name}</a>" for name in quote_tags.all()]))
 
 

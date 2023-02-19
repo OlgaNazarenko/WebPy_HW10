@@ -21,13 +21,6 @@
     color: white;
   }
 
-  kbd {
-  background-color: #eee;
-  color: #333;
-  padding: 2px 4px;
-  border-radius: 3px;
-}
-
 .quote {
     border: 1px solid #ccc;
     padding: 10px;
@@ -58,4 +51,8 @@ main.container {
 .dark-box {
   background-color: #222;
   color: #fff;
+}
+
+.body {
+  background-color: black;
 }

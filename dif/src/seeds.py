@@ -4,7 +4,7 @@ import json
 def retrieve_tags():
     tags = []
 
-    with open('data/quotes.json', 'r') as file:
+    with open('data/quotes.json' , 'r') as file:
         quotes = json.load(file)
 
         if quote in quotes:
@@ -15,7 +15,7 @@ def retrieve_tags():
 
 
 def retrieve_author():
-    with open('data/authors.json', 'r') as file:
+    with open('data/authors.json' , 'r') as file:
         authors = json.load(file)
 
     return authors
