@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-  <div>
-    {% for tag in quote.tags.all %}
-      <a href="{% url 'search_tag' tag.name %}" class="secondary">{{ tag.name }}</a>
-    {% endfor %}
-      <p>{{ quote.name }}</p>
-      <p>{{ tag.name}}</p>
-  </div>
-
-
+  <h2>Quotes with tag "{{ tag.name }}"</h2>
+  {% if quotes %}
+    <ul>
+      {% for quote in quotes %}
+        <li>{{ quote.quote }} - {{ quote.author.fullname }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No quotes found with tag "{{ tag }}".</p>
+  {% endif %}
 {% endblock %}

@@ -75,11 +75,14 @@
   <div class="container">
     <footer style="display: flex; flex-direction: row;">
       <div class="footer-right" style="flex-basis: 50%;">
-        <h3>Top Ten Tags </h3>
-        {% for tag in tags %}
-          <a href="{% url 'top_ten_tags' tag.name %}">{{ tag.name }}</a>
-        {% endfor %}
-      </div>
+        <div class="topten">
+          <h2>Top Ten tags</h2>
+          <ul>
+            {% for tag in top_tags %}
+              <li><a href="{% url 'top_ten_tags' tag.name %}">{{ tag.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
     </footer>
   </div>
 </aside>

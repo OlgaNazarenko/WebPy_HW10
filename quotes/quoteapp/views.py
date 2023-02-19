@@ -4,7 +4,6 @@ from django.views.generic import DetailView
 from django.db.models import Count
 
 
-# from taggit.models import Tag
 from django.core.paginator import Paginator, EmptyPage, Page, PageNotAnInteger
 
 from .models import Quote, Author, Tag
@@ -13,7 +12,6 @@ from .forms import QuoteForm, AuthorForm
 
 def main(request):
     quotes = Quote.objects.prefetch_related('tags').all().order_by('id')
-    # topTenTags = top_ten_tags()
     quotes_paginator = Paginator(quotes, 6)
     page_num = request.GET.get('page')
     page = quotes_paginator.get_page(page_num )
@@ -32,6 +30,7 @@ def main(request):
 
 def author(request, author_id):
     author = get_object_or_404(Author, pk=author_id)
+
     return render(request, 'author_detail.html', {'author': author})
 
 
@@ -48,6 +47,7 @@ def create_tags(tags: list):
             print(err)
             tag = Tag.objects.filter(name=name_tag).first()
             tags_from_db.append(tag)
+
     return tags_from_db
 
 
@@ -89,19 +89,19 @@ def add_author(request):
 
 def about_author(request, author_id):
     author = Author.objects.get(id=author_id)
+
     return render(request, 'about_author.html', {'author': author})
 
 
 def search_tag(request, tag):
-    tag_obj = Tag.objects.get(name=tag)
-    print(f"{tag_obj}")
-    quotes = Quote.objects.filter(tags=tag_obj)
-    print(f"{quotes}")
+    tag = Tag.objects.get(name=tag)
+    quotes = Quote.objects.filter(tags=tag)
 
-    return render (request, "search_tag.html", {"quotes": quotes})  # "tag": tag
+    return render (request, "search_tag.html", {"quotes": quotes, "tag": tag})  # "tag": tag
 
 
 def top_ten_tags():
     tag_list = Tag.objects.values('id').annotate(quotes_count=Count('quotes')).order_by('-num_tags')[:10]
     print(f'{tag_list}')
+
     return render(request, 'index.html', {'tag_list': tag_list})

@@ -1,19 +1,8 @@
-# from taggit.serializers import TagListSerializerField, TaggitSerializer
-
 from rest_framework import serializers
 
 from django.forms import ModelForm, CharField, TextInput, DateField
 from django import forms
 from .models import Author, Quote
-
-
-# class YourSerializer(TaggitSerializer, serializers.ModelSerializer):
-#
-#     tags = TagListSerializerField()
-#
-#     class Meta:
-#         model = Quote
-#         fields = '__all__'
 
 
 class QuoteForm(ModelForm):
