@@ -8,7 +8,7 @@ The following has been completed in this task [^1]:
 * You can go to the page of each author without user authentication 
 * All quotes are viewable without user authentication
 * Pagination. These are the next and previous buttons 
-* Converting data from MongoDB to Django objects and storing them in SQLite. In order to check if it works, the 
+* To convert data from MongoDB to Django objects and store them in SQLite. In order to check if it works, the 
   following should be performed:
      1. Launch an interactive Python shell from a terminal:&nbsp;&nbsp;&nbsp;&nbsp;
      
