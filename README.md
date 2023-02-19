@@ -7,14 +7,18 @@ The following has been completed in this task [^1]:
 * The ability to add a new quote to the site, indicating the author, only for a registered user. 
 * You can go to the page of each author without user authentication 
 * All quotes are viewable without user authentication
-* Pagination. These are the next and previous buttons
+* Pagination. These are the next and previous buttons 
+* Converting data from MongoDB to Django objects and storing them in SQLite. In order to check if it works, the 
+  following should be performed:
+          1. Launch an interactive Python shell from a terminal: 
+                `python manage.py shell`
+          2. Import models:
+                `from quoteapp.models import Tag, Author, Quote`
+          3. Run queries against the database to verify that the objects have been saved:
+                `tags = Tag.objects.all()`
+                 `print(tags)`
 
 
-However, I was not able to overcome the issue with: 
-- the "*search for quotes by tags*", once pagination was implemented 
-everything just collapsed. 
-- and "*the top 10*". I got stuck on that one too.
-- well, did not quite get the migration point either. 
 
 [^1]: Login -> Japan, 
       Password -> Seoul2023!
